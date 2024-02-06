@@ -90,7 +90,7 @@ async def EsIndexing():
  
 @router.post('/Perform_search')
 async def searchInEs(data:dict):
-    print(data.get("data"))
+    print(data.get("data")) 
     serach_result=perform_search(data.get("data")) 
     print(serach_result)
     return {"data":serach_result }

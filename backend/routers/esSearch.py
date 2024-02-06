@@ -2,9 +2,8 @@ from elasticsearch import Elasticsearch
 
 def perform_search(searchString):
     es = Elasticsearch("http://localhost:9200")
-
-    my_string = "id:12345"
-    if my_string.startswith("id:"):
+   
+    if searchString.startswith("id:"):
         flagID=True
     else:
         flagID=False
@@ -13,6 +12,7 @@ def perform_search(searchString):
 
         #  Your search query
     if searchString == "all4":
+        print("getting trending articles")
         search_query_prim = {
             "query": {
                 "match_all": {}
@@ -22,6 +22,7 @@ def perform_search(searchString):
 
 
     elif searchString == "all": 
+        print("getting all articles")
         search_query_prim = {
             "query": {
                 "match_all": {}
@@ -29,6 +30,7 @@ def perform_search(searchString):
         }
     
     elif flagID == True:
+         print("search based on id")
          search_query_prim = {
             "query": {
                 "bool": {
@@ -49,6 +51,7 @@ def perform_search(searchString):
             }
 
     else:
+        print("hehehehehehehehheheheheheheh")
         search_query_prim = {
             "query": {
                 "bool": {
